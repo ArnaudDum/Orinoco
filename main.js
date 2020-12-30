@@ -11,6 +11,7 @@ var request = new XMLHttpRequest();
 request.onreadystatechange = function() {
     if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
         var response = JSON.parse(this.responseText);
+        console.log('Connecté !');
         for(let i = 0; i < response.length; i++) {
 
             // CREATION DES CARTES PRODUITS
@@ -41,16 +42,22 @@ request.onreadystatechange = function() {
             cardPrice.classList.add('font-weight-bold');
             cardBtn.classList.add('btn', 'btn-success', 'stretched-link', 'px-md-5');
             cardBtn.setAttribute('role', 'button');
+            cardBtn.setAttribute('href', 'produit.html');
             cardBtn.textContent = 'Voir le produit';
 
-            // RECUPERATION DES ELEMENTS DU TABLEAU JSON
+            // RECUPERATION ET INTEGRATION DES ELEMENTS DE L'API
 
-            cardImg.setAttribute('src', 'http://localhost:3000/images/vcam_' + (i + 1) + '.jpg'); // METHODE CONTOURNEE, A REVOIR !
+            cardImg.setAttribute('src', response[i].imageUrl);
             cardTitle.innerHTML = response[i].name;
             cardPrice.innerHTML = response[i].price + ' €';
             cardText.innerHTML = response[i].description;
+            cardBtn.setAttribute('id', response[i]._id);
         };
     }
 };
 request.open("GET", "http://localhost:3000/api/cameras");
 request.send();
+
+
+// MISE EN PLACE PAGE PRODUIT
+
