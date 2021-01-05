@@ -1,5 +1,6 @@
 // REQUETE VERS L'API POUR L'INTEGRATION DES PRODUITS SUR LA PAGE D'ACCUEIL
 
+
 function connectAPI() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
@@ -8,6 +9,9 @@ function connectAPI() {
             console.log('Connecté !');
             for(i = 0; i < response.length; i++) {
                 createCard(response);
+                
+                localStorage.setItem('produit=' + (response[i]._id), JSON.stringify(response[i]));
+
             }
         }
     };
@@ -53,8 +57,8 @@ function createCard(e) {
     cardTitle.classList.add('card-title');
     cardText.classList.add('card-text');
     cardPrice.classList.add('font-weight-bold');
-    cardBtn.classList.add('btn', 'btn-success', 'stretched-link', 'px-md-5', 'product-link');
-    cardBtn.setAttribute('href', 'produit.html');
+    cardBtn.classList.add('btn', 'btn-success', 'stretched-link', 'px-md-5',);
+    cardBtn.setAttribute('href', 'produit.html' + '?id=' + e[i]._id);
     cardBtn.setAttribute('role', 'button');
     cardBtn.textContent = 'Voir le produit';
 
@@ -68,13 +72,3 @@ function createCard(e) {
     cardPrice.innerHTML = e[i].price + ' €';
     cardText.innerHTML = e[i].description;
 };
-
-
-// MISE EN PLACE PAGE PRODUIT
-
-
-const productPage = document.getElementById('pageProduit');
-let productImg = document.getElementById('productImg');
-let productTitle = document.getElementById('productTitle');
-let productText = document.getElementById('productText');
-let productPrice = document.getElementById('productPrice');
