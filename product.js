@@ -1,10 +1,16 @@
 // MISE EN PLACE PAGE PRODUIT
 
 
+let address = window.location.href;
+let IDProduit = address.slice(-24);
+let produit = JSON.parse(localStorage.getItem('produit=' + IDProduit));
+
+
 function showProduct() {
-    let address = window.location.href;
-    let IDProduit = address.slice(-24);
-    let produit = JSON.parse(localStorage.getItem('produit=' + IDProduit));
+
+
+    // RECUPERATION DE L'ID PRODUIT POUR L'AFFICHAGE
+
 
     let productImg = document.getElementById('productImg');
     let productTitle = document.getElementById('productTitle');
@@ -17,7 +23,7 @@ function showProduct() {
     productPrice.innerHTML = produit.price + ' €';
 
 
-    // INTEGRATION DE LA PARTIE DU CHOIX DE LENTILLE
+    // INTEGRATION DE LA PARTIE DU CHOIX DE LENTILLE (TYPE FORM)
 
 
     let chooseLense = document.getElementById('choose-lense');
@@ -44,3 +50,46 @@ function showProduct() {
 }
 
 showProduct();
+
+
+// AJOUT DU PRODUIT AU PANIER
+
+
+function addToBasket() {
+
+
+    // AJOUT NOUVEL ITEM A LA LISTE DE PRODUIT EN COMMANDE DANS LE LOCALSTORAGE
+
+
+    let itemName = produit.name;
+    let itemPrice = produit.price;
+    let itemImg = produit.imageUrl;
+    let listItem = [itemName, itemPrice, itemImg];
+
+
+    // Vérifier si une liste existe déjà dans le localstorage
+    // Si oui, la récupérer et y ajouter le nouvel item
+    // Si non, créer la liste et y ajouter le nouvel item
+
+
+    try {
+        localStorage.getItem('liste');
+    } catch {
+        let list = [];
+        localStorage.setItem('liste', JSON.stringify(list));
+    };
+
+    let newList = JSON.parse(localStorage.getItem('liste'));
+    newList.push(listItem);
+    localStorage.removeItem('liste');
+    localStorage.setItem('liste', JSON.stringify(newList));
+};
+
+
+// VALIDATION DE L'AJOUT DU PRODUIT VIA LE BOUTON PAGE PRODUIT
+
+
+let validationBtn = document.getElementById('validation-btn');
+validationBtn.addEventListener('click', function() {
+    addToBasket();
+});

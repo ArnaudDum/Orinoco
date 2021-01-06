@@ -58,7 +58,6 @@ function createCard(e) {
     cardText.classList.add('card-text');
     cardPrice.classList.add('font-weight-bold');
     cardBtn.classList.add('btn', 'btn-success', 'stretched-link', 'px-md-5',);
-    cardBtn.setAttribute('href', 'produit.html' + '?id=' + e[i]._id);
     cardBtn.setAttribute('role', 'button');
     cardBtn.textContent = 'Voir le produit';
 
@@ -71,4 +70,5 @@ function createCard(e) {
     cardTitle.innerHTML = e[i].name;
     cardPrice.innerHTML = e[i].price + ' €';
     cardText.innerHTML = e[i].description;
+    cardBtn.setAttribute('href', 'produit.html' + '?id=' + e[i]._id);
 };
