@@ -9,7 +9,7 @@ let produit = JSON.parse(localStorage.getItem('produit=' + IDProduit));
 function showProduct() {
 
 
-    // RECUPERATION DE L'ID PRODUIT POUR L'AFFICHAGE
+    // Récupération de l'ID produit pour l'affichage
 
 
     let productImg = document.getElementById('productImg');
@@ -23,7 +23,7 @@ function showProduct() {
     productPrice.innerHTML = produit.price + ' €';
 
 
-    // INTEGRATION DE LA PARTIE DU CHOIX DE LENTILLE (TYPE FORM)
+    // Création de la partie du choix de la lentille (TYPE FORM)
 
 
     let chooseLense = document.getElementById('choose-lense');
@@ -52,13 +52,13 @@ function showProduct() {
 showProduct();
 
 
-// AJOUT DU PRODUIT AU PANIER
+// Ajout d'un produit au panier
 
 
 function addToBasket() {
 
 
-    // AJOUT NOUVEL ITEM A LA LISTE DE PRODUIT EN COMMANDE DANS LE LOCALSTORAGE
+    // Ajout du nouvel item dans la liste de produit commandés dans le localstorage
 
 
     let itemName = produit.name;
@@ -68,8 +68,8 @@ function addToBasket() {
 
 
     // Vérifier si une liste existe déjà dans le localstorage
-    // Si oui, la récupérer et y ajouter le nouvel item
-    // Si non, créer la liste et y ajouter le nouvel item
+    // Si oui, la récupérer, sinon, la créer
+    // Ajouter le nouvel item à la liste
 
 
     try {
@@ -86,7 +86,7 @@ function addToBasket() {
 };
 
 
-// VALIDATION DE L'AJOUT DU PRODUIT VIA LE BOUTON PAGE PRODUIT
+// Validation de l'ajout du produit via le bouton de la page produit
 
 
 let validationBtn = document.getElementById('validation-btn');

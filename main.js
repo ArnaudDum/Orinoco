@@ -22,13 +22,13 @@ function connectAPI() {
 connectAPI();
 
 
-// INTEGRATION DU CONTENU DE LA PAGE D'ACCUEIL
+// Intégration du contenu de la page d'accueil
 
 
 function createCard(e) {
 
 
-    // CREATION DES ELEMENTS EN HTML
+    // Création des éléments en HTML
 
 
     const page = document.getElementById('main');
@@ -62,7 +62,7 @@ function createCard(e) {
     cardBtn.textContent = 'Voir le produit';
 
 
-    // RECUPERATION ET INTEGRATION DES ELEMENTS DE L'API
+    // Récupération et intégration des éléments de l'API
 
 
     card.setAttribute('id', e[i]._id);
