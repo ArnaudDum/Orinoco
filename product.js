@@ -68,21 +68,21 @@ function addToBasket() {
 
 
     // Vérifier si une liste existe déjà dans le localstorage
-    // Si oui, la récupérer, sinon, la créer
-    // Ajouter le nouvel item à la liste
+    // Si oui, la récupérer et ajouter le nouvel item à la liste
+    // Sinon, la créer et ajouter le nouvel item à la liste
 
 
     try {
         localStorage.getItem('liste');
+        let newList = JSON.parse(localStorage.getItem('liste'));
+        newList.push(listItem);
+        localStorage.removeItem('liste');
+        localStorage.setItem('liste', JSON.stringify(newList));
     } catch {
         let list = [];
+        list.push(listItem);
         localStorage.setItem('liste', JSON.stringify(list));
     };
-
-    let newList = JSON.parse(localStorage.getItem('liste'));
-    newList.push(listItem);
-    localStorage.removeItem('liste');
-    localStorage.setItem('liste', JSON.stringify(newList));
 };
 
 
