@@ -5,7 +5,6 @@ let productList = document.getElementById('product-list');
 
 function showList() {
     let maListe = JSON.parse(localStorage.getItem('liste'));
-    console.log(maListe);
     for(i = 0; i < maListe.length; i++) {
         let itemCard = document.createElement('div');
         itemCard.classList.add('d-flex', 'flex-row', 'justify-content-between', 'p-1', 'align-items-center');
