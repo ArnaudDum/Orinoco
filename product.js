@@ -64,7 +64,8 @@ function addToBasket() {
     let itemName = produit.name;
     let itemPrice = produit.price;
     let itemImg = produit.imageUrl;
-    let listItem = [itemName, itemPrice, itemImg];
+    let itemID = produit._id;
+    let listItem = [itemName, itemPrice, itemImg, itemID];
 
 
     // Vérifier si une liste existe déjà dans le localstorage

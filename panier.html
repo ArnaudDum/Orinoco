@@ -64,34 +64,34 @@
             </div>
             <div class="row">
                 <div class="col-12 mb-3 mb-md-5 text-left">
-                    <form>
+                    <form id="order-form" method="post" action="validation.html">
                         <div class="form-group">
                             <label>Votre prénom :</label>
                             <br/>
-                            <input type="text" required/>
+                            <input type="text" name="prenom" required/>
                         </div>
                         <div class="form-group">
                             <label>Votre nom :</label>
                             <br/>
-                            <input type="text" required/>
+                            <input type="text" name="nom" required/>
                         </div>
                         <div class="form-group">
                             <label>Adresse :</label>
                             <br/>
-                            <input type="text" required/>
+                            <input type="text" name="adresse" required/>
                         </div>
                         <div class="form-group">
                             <label>Ville :</label>
                             <br/>
-                            <input type="text" required/>
+                            <input type="text" name="ville" required/>
                         </div>
                         <div class="form-group">
                             <label>Adresse e-mail :</label>
                             <br/>
-                            <input type="email" required/>
+                            <input type="email" name="email" required/>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-success px-md-5">Valider la commande</button>
+                            <input id="form-btn" type="button" value="Valider la commande" class="btn btn-success px-md-5"></input>
                         </div>
                     </form>
                 </div>
