@@ -25,7 +25,7 @@ connectAPI();
 // Intégration du contenu de la page d'accueil
 
 
-function createCard(e) {
+function createCard(x) {
 
 
     // Création des éléments en HTML
@@ -65,10 +65,10 @@ function createCard(e) {
     // Récupération et intégration des éléments de l'API
 
 
-    card.setAttribute('id', e[i]._id);
-    cardImg.setAttribute('src', e[i].imageUrl);
-    cardTitle.innerHTML = e[i].name;
-    cardPrice.innerHTML = e[i].price + ' €';
-    cardText.innerHTML = e[i].description;
-    cardBtn.setAttribute('href', 'produit.html' + '?id=' + e[i]._id);
+    card.setAttribute('id', x[i]._id);
+    cardImg.setAttribute('src', x[i].imageUrl);
+    cardTitle.innerHTML = x[i].name;
+    cardPrice.innerHTML = x[i].price + ' €';
+    cardText.innerHTML = x[i].description;
+    cardBtn.setAttribute('href', 'produit.html' + '?id=' + x[i]._id);
 };

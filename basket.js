@@ -2,6 +2,8 @@
 
 
 let productList = document.getElementById('product-list');
+let totalPrice = document.getElementById('total-price');
+let sum = 0;
 
 function showList() {
     let maListe = JSON.parse(localStorage.getItem('liste'));
@@ -27,7 +29,19 @@ function showList() {
         itemCardTitle.classList.add('col-6');
         itemCardPrice.classList.add('col-4');
         itemCardImg.classList.add('card-img-left', 'img-fluid', 'col-1');
+
+
+        // On rajoute le prix de chaque article à la somme
+
+
+        sum += thisItem[1];
     };
 };
 
 showList();
+
+
+// Calcul de la somme totale du panier
+
+
+totalPrice.innerHTML = sum + ' €';
