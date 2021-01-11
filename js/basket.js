@@ -106,8 +106,8 @@ function sendOrderToApi(object) {
 // Validation des données utilisateur
 
 
-function validPrenom() {
-    if(/[A-Za-zéèàîïêëâäûüôö-]+/.test(orderForm.prenom.value)) {
+function validPrenom(value) {
+    if(/[A-Za-zéèàîïêëâäûüôö-]+/.test(value)) {
         return true;
     } else {
         alert("Le prénom n'est pas valide");
@@ -115,8 +115,8 @@ function validPrenom() {
     };
 };
 
-function validNom() {
-    if(/[A-Za-zéèàîïêëâäûüôö-]+/.test(orderForm.nom.value)) {
+function validNom(value) {
+    if(/[A-Za-zéèàîïêëâäûüôö-]+/.test(value)) {
         return true;
     } else {
         alert("Le nom n'est pas valide");
@@ -124,8 +124,8 @@ function validNom() {
     };
 };
 
-function validAddresse() {
-    if(/[A-Za-zéèàîïêëâäûüôö0-9\.,'-]+/.test(orderForm.adresse.value)) {
+function validAddresse(value) {
+    if(/[A-Za-zéèàîïêëâäûüôö0-9\.,'-]+/.test(value)) {
         return true;
     } else {
         alert("L'adresse n'est pas valide");
@@ -133,8 +133,8 @@ function validAddresse() {
     };
 };
 
-function validVille() {
-    if(/[A-Za-zéèàîïêëâäûüôö'-]+/.test(orderForm.ville.value)) {
+function validVille(value) {
+    if(/[A-Za-zéèàîïêëâäûüôö'-]+/.test(value)) {
         return true;
     } else {
         alert("La ville n'est pas valide");
@@ -142,8 +142,8 @@ function validVille() {
     };
 };
 
-function validEmail() {
-    if(/^[A-Za-z0-9\.-]+@[a-z]+\.[a-z]{2,4}$/.test(orderForm.email.value)) {
+function validEmail(value) {
+    if(/^[A-Za-z0-9\.-]+@[a-z]+\.[a-z]{2,4}$/.test(value)) {
         return true;
     } else {
         alert("L'adresse mail n'est pas valide");
@@ -161,7 +161,7 @@ let formBtn = document.getElementById('form-btn');
 formBtn.addEventListener('click', function(event) {
     event.preventDefault();
     event.stopPropagation();
-    if(validPrenom() == true && validNom() == true && validAddresse() == true && validVille() == true && validEmail() == true) {
+    if(validPrenom(orderForm.prenom.value) == true && validNom(orderForm.nom.value) == true && validAddresse(orderForm.adresse.value) == true && validVille(orderForm.ville.value) == true && validEmail(orderForm.email.value) == true) {
         let contact = new Contact(
             orderForm.prenom.value,
             orderForm.nom.value,

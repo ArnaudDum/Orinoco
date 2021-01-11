@@ -1,7 +1,7 @@
 // REQUETE VERS L'API POUR L'INTEGRATION DES PRODUITS SUR LA PAGE D'ACCUEIL
 
 
-let connectToAPI = function() {
+let connectToAPI = function(url) {
     return new Promise(function(resolve) {
         let request = new XMLHttpRequest();
         request.onreadystatechange = function() {
@@ -18,12 +18,12 @@ let connectToAPI = function() {
                 }
             }
         };
-        request.open("GET", "http://localhost:3000/api/cameras");
+        request.open("GET", url);
         request.send();
     })
 };
 
-connectToAPI();
+connectToAPI("http://localhost:3000/api/cameras");
 
 
 // Intégration du contenu de la page d'accueil
