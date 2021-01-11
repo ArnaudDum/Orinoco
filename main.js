@@ -1,25 +1,29 @@
 // REQUETE VERS L'API POUR L'INTEGRATION DES PRODUITS SUR LA PAGE D'ACCUEIL
 
 
-function connectAPI() {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-            var response = JSON.parse(this.responseText);
-            console.log('Connecté !');
-            for(i = 0; i < response.length; i++) {
-                createCard(response);
-                
-                localStorage.setItem('produit=' + (response[i]._id), JSON.stringify(response[i]));
+let connectToAPI = function() {
+    return new Promise(function(resolve) {
+        let request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                var response = JSON.parse(this.responseText);
+                console.log('Connecté !');
+                for(i = 0; i < response.length; i++) {
+                    createCard(response);
 
+                    // Enregistrement des produits dans le localStorage
+
+                    localStorage.setItem('produit=' + (response[i]._id), JSON.stringify(response[i]));
+
+                }
             }
-        }
-    };
-    request.open("GET", "http://localhost:3000/api/cameras");
-    request.send();
+        };
+        request.open("GET", "http://localhost:3000/api/cameras");
+        request.send();
+    })
 };
 
-connectAPI();
+connectToAPI();
 
 
 // Intégration du contenu de la page d'accueil
