@@ -42,9 +42,9 @@ function showProduct() {
         lense.setAttribute('name', lensesBoard[i]);
         lense.setAttribute('value', lensesBoard[i]);
         lense.setAttribute('id', lensesBoard[i]);
-        lense.classList.add('form-check-input', 'mx-3', 'mx-md-5');
-        lenseLabel.classList.add('form-check-label', 'mx-3', 'mx-md-5');
-        lenseLabel.innerHTML = lensesBoard[i];
+        lense.removeAttribute('position');
+        lenseLabel.classList.add('form-check-label', 'ml-3');
+        lenseLabel.innerHTML = '     ' + lensesBoard[i];
         lenseLabel.setAttribute('for', lensesBoard[i]);
     };
 }
