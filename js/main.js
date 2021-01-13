@@ -7,7 +7,6 @@ let connectToAPI = function(url) {
         request.onreadystatechange = function() {
             if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
                 var response = JSON.parse(this.responseText);
-                console.log('Connecté !');
                 for(i = 0; i < response.length; i++) {
                     createCard(response);
 
@@ -75,4 +74,12 @@ function createCard(x) {
     cardPrice.innerHTML = x[i].price + ' €';
     cardText.innerHTML = x[i].description;
     cardBtn.setAttribute('href', 'produit.html' + '?id=' + x[i]._id);
+
+
+    // Correctif taille de la 5ème card
+
+
+    if(card.getAttribute('id') == '5be9c4c71c9d440000a730e9') {
+        cardImg.setAttribute('style', 'margin-bottom: 44px;')
+    }
 };

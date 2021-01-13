@@ -76,7 +76,6 @@ function sendOrderToApi(object) {
         let request = new XMLHttpRequest();
         request.onreadystatechange = function() {
             if(this.readyState == XMLHttpRequest.DONE && this.status == 201) {
-                console.log('Commande envoyée !');
 
 
                 // Récupération de la réponse de l'API
@@ -107,7 +106,7 @@ function sendOrderToApi(object) {
 
 
 function validPrenom(value) {
-    if(/[A-Za-zéèàîïêëâäûüôö-]+/.test(value)) {
+    if(/^[A-Za-zéèàîïêëâäûüôö'-]+ ?[A-Za-zéèàîïêëâäûüôö'-]+$/.test(value)) {
         return true;
     } else {
         alert("Le prénom n'est pas valide");
@@ -116,7 +115,7 @@ function validPrenom(value) {
 };
 
 function validNom(value) {
-    if(/[A-Za-zéèàîïêëâäûüôö-]+/.test(value)) {
+    if(/^[A-Za-zéèàîïêëâäûüôö'-]+ ?[A-Za-zéèàîïêëâäûüôö'-]+$/.test(value)) {
         return true;
     } else {
         alert("Le nom n'est pas valide");
@@ -125,7 +124,7 @@ function validNom(value) {
 };
 
 function validAddresse(value) {
-    if(/[A-Za-zéèàîïêëâäûüôö0-9\.,'-]+/.test(value)) {
+    if(/[A-Za-zéèàîïêëâäûüôö0-9\.,'-]+ ?[A-Za-zéèàîïêëâäûüôö'0-9-]/.test(value)) {
         return true;
     } else {
         alert("L'adresse n'est pas valide");
@@ -134,7 +133,7 @@ function validAddresse(value) {
 };
 
 function validVille(value) {
-    if(/[A-Za-zéèàîïêëâäûüôö'-]+/.test(value)) {
+    if(/^[A-Za-zéèàîïêëâäûüôö'-]+ ?[A-Za-zéèàîïêëâäûüôö'-]+$/.test(value)) {
         return true;
     } else {
         alert("La ville n'est pas valide");
@@ -183,6 +182,6 @@ formBtn.addEventListener('click', function(event) {
                 localStorage.removeItem('liste');
             })
     } else {
-        console.log("Erreur d'envoi du formulaire");
+        alert("Erreur d'envoi du formulaire");
     }
 });
