@@ -2,6 +2,7 @@
 
 
 let showOrderID = document.getElementById('orderID');
+
 function getReturnedID() {
     let response = JSON.parse(localStorage.getItem('Recap-commande'));
     let retourID = response.orderId;
@@ -9,3 +10,5 @@ function getReturnedID() {
 }
 
 showOrderID.innerHTML = getReturnedID();
+
+localStorage.clear();
