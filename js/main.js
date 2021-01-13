@@ -80,6 +80,6 @@ function createCard(x) {
 
 
     if(card.getAttribute('id') == '5be9c4c71c9d440000a730e9') {
-        cardImg.setAttribute('style', 'margin-bottom: 44px;')
+        cardImg.setAttribute('style', 'margin-bottom: 46px;')
     }
 };
