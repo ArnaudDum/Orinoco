@@ -54,7 +54,7 @@ showList();
 totalPrice.innerHTML = sum + ' €';
 
 
-// Création d'une classe "order"
+// Création d'une classe "Contact"
 
 
 class Contact {
@@ -82,7 +82,6 @@ function sendOrderToApi(object) {
 
                 
                 localStorage.setItem('Recap-commande', this.responseText);
-                localStorage.removeItem('liste');
 
 
                 // Redirection vers la page de confirmation
@@ -99,14 +98,11 @@ function sendOrderToApi(object) {
 };
 
 
-// Création d'une instance de la classe "Contact" (si tout est validé) quand le formulaire est envoyé
-
-
 // Validation des données utilisateur
 
 
 function validPrenom(value) {
-    if(/^[A-Za-zéèàîïêëâäûüôö'-]+ ?[A-Za-zéèàîïêëâäûüôö'-]+$/.test(value)) {
+    if(/^[A-Za-zéèàîïêëâäûüôö'-]+ *[A-Za-zéèàîïêëâäûüôö'-]*$/.test(value)) {
         return true;
     } else {
         alert("Le prénom n'est pas valide");
@@ -115,7 +111,7 @@ function validPrenom(value) {
 };
 
 function validNom(value) {
-    if(/^[A-Za-zéèàîïêëâäûüôö'-]+ ?[A-Za-zéèàîïêëâäûüôö'-]+$/.test(value)) {
+    if(/^[A-Za-zéèàîïêëâäûüôö'-]+ *[A-Za-zéèàîïêëâäûüôö'-]*$/.test(value)) {
         return true;
     } else {
         alert("Le nom n'est pas valide");
@@ -124,7 +120,7 @@ function validNom(value) {
 };
 
 function validAddresse(value) {
-    if(/[A-Za-zéèàîïêëâäûüôö0-9\.,'-]+ ?[A-Za-zéèàîïêëâäûüôö'0-9-]/.test(value)) {
+    if(/[A-Za-zéèàîïêëâäûüôö0-9\.,'-]+ *[A-Za-zéèàîïêëâäûüôö'0-9-]*/.test(value)) {
         return true;
     } else {
         alert("L'adresse n'est pas valide");
@@ -133,7 +129,7 @@ function validAddresse(value) {
 };
 
 function validVille(value) {
-    if(/^[A-Za-zéèàîïêëâäûüôö'-]+ ?[A-Za-zéèàîïêëâäûüôö'-]+$/.test(value)) {
+    if(/^[A-Za-zéèàîïêëâäûüôö'-]+ *[A-Za-zéèàîïêëâäûüôö'-]*$/.test(value)) {
         return true;
     } else {
         alert("La ville n'est pas valide");
@@ -161,6 +157,11 @@ formBtn.addEventListener('click', function(event) {
     event.preventDefault();
     event.stopPropagation();
     if(validPrenom(orderForm.prenom.value) == true && validNom(orderForm.nom.value) == true && validAddresse(orderForm.adresse.value) == true && validVille(orderForm.ville.value) == true && validEmail(orderForm.email.value) == true) {
+        
+        
+        // Création d'une instance de la classe "Contact" (si tout est validé) quand le formulaire est envoyé
+
+        
         let contact = new Contact(
             orderForm.prenom.value,
             orderForm.nom.value,

@@ -11,4 +11,4 @@ function getReturnedID() {
 
 showOrderID.innerHTML = getReturnedID();
 
-localStorage.clear();
+localStorage.removeItem('Recap-commande');
