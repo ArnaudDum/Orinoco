@@ -93,4 +93,5 @@ function addToBasket() {
 let validationBtn = document.getElementById('validation-btn');
 validationBtn.addEventListener('click', function() {
     addToBasket();
+    alert('Article ajouté au panier');
 });
